@@ -4,30 +4,39 @@
     import RaisedButton from 'material-ui/RaisedButton'
     import SelectField from 'material-ui/SelectField';
     import MenuItem from 'material-ui/MenuItem';
+    import AppBar from 'material-ui/AppBar';
 
+const AppStyle = {
+    textAlign:'center',
+   // backgroundColor:'transparent',
+   // textColor:'#212121'
+}
 
+    const style = {
+    height: 700,
+    width: 400,
+    margin: 60,
+    textAlign: 'center',
+    display: 'inline-block',
+};
 const styles = {
   customWidth: {
     width: 150,
   },
 };
-    const style = {
-    height: 100,
-    width: 100,
-    margin: 20,
-    textAlign: 'center',
-    display: 'inline-block',
-    };
 
     class SignUp extends Component{
-        BloodGroup;
+        BloodGroups;
     constructor(props){
         super(props)
-        this.BloodGroup=["A+","A-",'B+','B-','AB','O+',"O-"];
+        this.BloodGroups=["A+","A-",'B+','B-','AB','O+',"O-"]
         this.state={
             name:'',
-            gender:'',
-            bloodGroup:'',
+            age:'',
+            address:'',
+            phone_no:'',
+            gender:1,
+            bloodGroup:'A+',
             email:'',
             password:''}
 
@@ -35,29 +44,32 @@ const styles = {
         this.inputHandling=this.inputHandling.bind(this)
     }
     
-    handelBloodValue=(i,v)=>{
+    handelBloodValue=(e,index,value)=>{
         this.setState({bloodGroup:value})
     }
-handelGenderValue=(i,v)=>{
-    this.setState({gender:vale})
+handelGenderValue=(e,index,value)=>{
+    this.setState({gender:value})
 }
 
     inputHandling(e){
 e.preventDefault()
-              var  name=this.refs.name.getValue();
-              var  gender=this.state.gender;
-              var   bloodGroup=this.state.bloodGroup;
-             var   email=this.refs.email.getValue();
-               var  password=this.refs.password.getValue();
+              var name=this.refs.name.getValue();
+               var age=this.refs.age.getValue();
+                var address=this.refs.address.getValue();
+                 var phone_no=this.refs.phone_no.getValue();
+              var gender=this.state.gender;
+              var bloodGroup=this.state.bloodGroup;
+             var  email=this.refs.email.getValue();
+               var password=this.refs.password.getValue();
 
-var obj = {name:name,gender:gender,bloodGroup:bloodGroup,email:email,password:password};
-//this.props.......(obj)
+var obj = {name:name,gender:gender,bloodGroup:bloodGroup,email:email,password:password,address:address,age:age,phone_no:phone_no};
+this.props.signupRequest(obj)
                 
     }
 
     handelInput(e){
 const target=e.target;
-const value = target.type =='checkbox'? target.checked:target.value
+const value = target.type ==='checkbox'? target.checked:target.value
 const name = target.name;
 
 
@@ -72,6 +84,14 @@ this.setState({
     render(){
         return(
     <div>
+ <AppBar
+    title="Personal Information"
+    style={AppStyle}
+   // style={{color:'#212121'}}
+    iconClassNameRight="muidocs-icon-navigation-expand-more"
+  />
+
+        <center>
     <Paper style={style} zDepth={4} >
     <form onSubmit={this.inputHandling}>
 
@@ -80,25 +100,48 @@ this.setState({
         ref='name'
         name='name'
         onChange={this.handelInput}
-        floatingLabelText="Floating Label Text"
-        /><br />
+        floatingLabelText="Type Here"
+        /><br /><br />
+         <TextField
+        hintText="Age"
+        ref='age'
+        name='age'
+        onChange={this.handelInput}
+        floatingLabelText="Type Here"
+        /><br /><br />
+ <TextField
+        hintText="Address"
+        ref='address'
+        name='address'
+        onChange={this.handelInput}
+        floatingLabelText="Type Here"
+        /><br /><br />
+
+         <TextField
+        hintText="Cell No"
+        ref='phone_no'
+        name='phone_no'
+        onChange={this.handelInput}
+        floatingLabelText="Type Here"
+        /><br /><br />
+
         <SelectField
          ref='gender'
          name='gender'
          hintText="Gender"
-          floatingLabelText="Frequency"
+          floatingLabelText="Select Field"
           value={this.state.gender}
           onChange={this.handelGenderValue}
         >
           <MenuItem value={1} primaryText="male" />
           <MenuItem value={2} primaryText="female" />
         </SelectField>
-        <br />
+        <br /><br />
          <SelectField
           ref='bloodGroup'
           name='bloodGroup'
           hintText="Blood Group"
-          floatingLabelText="Frequency"
+          floatingLabelText="Select Field"
           value={this.state.bloodGroup}
           onChange={this. handelBloodValue}
         >
@@ -110,8 +153,9 @@ this.setState({
           <MenuItem value={6} primaryText="O+" />
           <MenuItem value={7} primaryText="O-" />*/}
 
-{this.BloodGroup.map(bldgrop=>{
-    return<ManuItem key={bldgrop} value={bldgrop}/>
+{ 
+    this.BloodGroups.map(bldgrop=>{
+    return<MenuItem key={bldgrop} value={bldgrop} primaryText={bldgrop} />
 })
 
 
@@ -120,29 +164,30 @@ this.setState({
 
         </SelectField>
         
-        <br />
+        <br /><br />
         <TextField
         hintText="Email"
         ref='email'
         name='email'
           onChange={this.handelInput}
-        floatingLabelText="Floating Label Text"
-        /><br />
+        floatingLabelText="Type Here"
+        /><br /><br />
         <TextField
         hintText="Password"
         ref='password'
         type='password'
         name='password'
           onChange={this.handelInput}
-        floatingLabelText="Floating Label Text"
-        /><br />
+        floatingLabelText="Type Here"
+        /><br /><br />
 
 
-    <RaisedButton label="Signup" type='submit' style={style} />
+    <RaisedButton label="Signup" type='submit' styles={style} />
 
 
     </form>
     </Paper>
+      </center>
     </div>
 
 

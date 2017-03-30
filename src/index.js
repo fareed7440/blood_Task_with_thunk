@@ -1,23 +1,25 @@
-import React from 'react';
+import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import Signup from './container/signupCon'
+import store from './store/store'
+import { Provider } from 'react-redux';
+import SignupContainer from './container/signupCon'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 import {
   browserHistory, Router, Route, IndexRoute, IndexRedirect,Link, IndexLink} from 'react-router';
 
-class RouterComponent extends Component{
+export class RouterComponent extends Component{
   render(){
     return(
       <div>
       <MuiThemeProvider>
           <Provider store={store}>
             <Router history={browserHistory}>
-              <Route path="/" component={Signup}></Route>
-                <IndexRedirect to="/signupCon" />
+              <Route path="/" component={SignupContainer}></Route>
+                <Route path="/signupCon" component={SignupContainer}></Route>
                 </Router>
                 </Provider>
          </MuiThemeProvider>,

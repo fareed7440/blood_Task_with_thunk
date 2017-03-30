@@ -8,17 +8,23 @@ export function signupRequest(signData){
             signData.email,signData.password
         )
         .then((data)=>{
-            const userRef = db.database.ref('/user'+data.uid);
+            const userRef = db.database.ref('/user/'+data.uid);
             userRef.set({
                 uid: data.uid,
+                address:signData.address,
+                age:signData.age,
+                phone_no:signData.phone_no,
                 email:data.email,
                 name:signData.name,
                 gender:signData.gender==1 ? "male":'female',
                 bloodGroup:signData.bloodGroup,
 
             },signupSuccess =>{
-                dispatch(ignUpReQSuccess({
+                dispatch(signUpReQSuccess({
                      uid: data.uid,
+                      address:signData.address,
+                age:signData.age,
+                phone_no:signData.phone_no,
                 email:data.email,
                 name:signData.name,
                 gender:signData.gender==1 ? "male":'female',
@@ -40,19 +46,19 @@ export function signupRequest(signData){
 
 export function signUpReQ(){
         return{
-            type:Actions.SIGNUP_REQUEST
+            type:Actions.SIGNUPREQUEST
         }
 }
 
 export function signUpReQSuccess(data){
     return{
-        type:Actions.SIGNUP_REQUEST_SUCCESS,
+        type:Actions.SIGNUPREQUESTSUCCESS,
         data
     }
 }
 
 export function signupRequestfialed(){
     return{
-        type:Actions.SIGNUP_REQUEST_FAILED
+        type:Actions.SIGNUPREQUESTFAILED
     }
 }

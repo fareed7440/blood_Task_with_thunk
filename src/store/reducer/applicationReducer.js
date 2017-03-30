@@ -1,11 +1,11 @@
 import Actions from '../action/actionTypes'
 
-const INITIAL_STATE = {};
+const InitialState =  {};
 
-export function applicationReducer(state = INITIAL_STATE,action){
+function applicationReducer(state = InitialState, action){
     switch(action.type){
         case Actions.INITIALSTATE:{
-            return state
+            return state;
         }
 
         case Actions.SIGNUP_REQUEST_SUCCESS:{
@@ -14,6 +14,9 @@ export function applicationReducer(state = INITIAL_STATE,action){
             return state;
             
         }
+        default:
+        return state
     }
 }
 
+export default applicationReducer;
