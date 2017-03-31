@@ -8,12 +8,18 @@ function applicationReducer(state = InitialState, action){
             return state;
         }
 
-        case Actions.SIGNUP_REQUEST_SUCCESS:{
+        case Actions.SIGNUPREQUESTSUCCESS:{
             var sign = Object.assign({},state,{user:action.data})
             state = sign
-            return state;
-            
+            return state; 
         }
+
+case Actions.SIGNUPPREQUESTSUCCESS:{
+    var Signn = Object.assign({},state,{user:action.data})
+    state = Signn
+    return state;
+}
+
         default:
         return state
     }

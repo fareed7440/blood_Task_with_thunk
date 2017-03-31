@@ -32,13 +32,15 @@ const styles = {
         this.BloodGroups=["A+","A-",'B+','B-','AB','O+',"O-"]
         this.state={
             name:'',
+            
             age:'',
             address:'',
             phone_no:'',
             gender:1,
             bloodGroup:'A+',
             email:'',
-            password:''}
+           // password:''
+        }
 
         this.handelInput=this.handelInput.bind(this)
         this.inputHandling=this.inputHandling.bind(this)
@@ -60,9 +62,9 @@ e.preventDefault()
               var gender=this.state.gender;
               var bloodGroup=this.state.bloodGroup;
              var  email=this.refs.email.getValue();
-               var password=this.refs.password.getValue();
+            //   var password=this.refs.password.getValue();
 
-var obj = {name:name,gender:gender,bloodGroup:bloodGroup,email:email,password:password,address:address,age:age,phone_no:phone_no};
+var obj = {name:name,gender:gender==1 ? 'male':'female',bloodGroup:bloodGroup,email:email,address:address,age:age,phone_no:phone_no};
 this.props.signupRequest(obj)
                 
     }
@@ -99,6 +101,7 @@ this.setState({
         hintText="Name"
         ref='name'
         name='name'
+         required={true}
         onChange={this.handelInput}
         floatingLabelText="Type Here"
         /><br /><br />
@@ -106,6 +109,8 @@ this.setState({
         hintText="Age"
         ref='age'
         name='age'
+         type='number'
+         required={true}
         onChange={this.handelInput}
         floatingLabelText="Type Here"
         /><br /><br />
@@ -113,6 +118,7 @@ this.setState({
         hintText="Address"
         ref='address'
         name='address'
+         required={true}
         onChange={this.handelInput}
         floatingLabelText="Type Here"
         /><br /><br />
@@ -121,6 +127,7 @@ this.setState({
         hintText="Cell No"
         ref='phone_no'
         name='phone_no'
+        type='number'
         onChange={this.handelInput}
         floatingLabelText="Type Here"
         /><br /><br />
@@ -129,6 +136,7 @@ this.setState({
          ref='gender'
          name='gender'
          hintText="Gender"
+          required={true}
           floatingLabelText="Select Field"
           value={this.state.gender}
           onChange={this.handelGenderValue}
@@ -140,6 +148,7 @@ this.setState({
          <SelectField
           ref='bloodGroup'
           name='bloodGroup'
+          required={true}
           hintText="Blood Group"
           floatingLabelText="Select Field"
           value={this.state.bloodGroup}
@@ -169,20 +178,23 @@ this.setState({
         hintText="Email"
         ref='email'
         name='email'
+        type='email'
+         required={true}
           onChange={this.handelInput}
         floatingLabelText="Type Here"
         /><br /><br />
-        <TextField
+        {/*<TextField
         hintText="Password"
         ref='password'
         type='password'
         name='password'
+
           onChange={this.handelInput}
         floatingLabelText="Type Here"
-        /><br /><br />
+        /><br /><br />*/}
 
 
-    <RaisedButton label="Signup" type='submit' styles={style} />
+    <RaisedButton label="Signup" type='submit' style={styles} />
 
 
     </form>
