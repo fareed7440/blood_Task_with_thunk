@@ -15,7 +15,7 @@ const AppStyle = {
     const style = {
     height: 400,
     width: 400,
-    margin: 60,
+    margin: 120,
     textAlign: 'center',
     display: 'inline-block',
 };
@@ -59,10 +59,16 @@ this.setState({
 render(){
     return(
 <div>
+    <AppBar
+    title="Login "
+    style={AppStyle}
+   // style={{color:'#212121'}}
+    iconClassNameRight="muidocs-icon-navigation-expand-more"
+  />
   <center>
     <Paper style={style} zDepth={4} >
     <form onSubmit={this.inputHandling}>
-
+<br/><br/>
  <TextField
         hintText="Email"
         ref='email'
@@ -71,7 +77,7 @@ render(){
          required={true}
           onChange={this.handelInput}
         floatingLabelText="Type Here"
-        /><br /><br />
+        /><br /><br /><br/>
         <TextField
         hintText="Password"
         ref='password'
@@ -80,7 +86,7 @@ render(){
 
           onChange={this.handelInput}
         floatingLabelText="Type Here"
-        /><br /><br />
+        /><br /><br /><br/>
  <RaisedButton label="Login" type='submit' style={styles} />
 
 
