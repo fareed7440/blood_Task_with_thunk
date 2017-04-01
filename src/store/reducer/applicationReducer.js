@@ -20,6 +20,12 @@ case Actions.SIGNUPPREQUESTSUCCESS:{
     return state;
 }
 
+case Actions.LOGINREQUESTSUCCESS:{
+    var login = Object.assign({},state,{user:action.data})
+    state= login
+    return state;
+}
+
         default:
         return state
     }

@@ -5,6 +5,7 @@ import './index.css';
 import store from './store/store'
 import { Provider } from 'react-redux';
 import SignuppContainer from './container/signuppCon'
+import LogContainer from './container/loginCon'
 import SignupContainer from './container/signupCon'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -22,6 +23,7 @@ export class RouterComponent extends Component{
               <Route path="/" component={SignupContainer}></Route>
                 <Route path="/signupCon" component={SignupContainer}></Route> 
                 <Route path="/signuppCon" component={SignuppContainer}></Route>
+                <Route path="/loginCon" component={LogContainer}></Route>
                 </Router>
                 </Provider>
          </MuiThemeProvider>,
