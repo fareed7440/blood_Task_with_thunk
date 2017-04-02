@@ -1,16 +1,17 @@
 import Actions from './actionTypes'
 import * as db from '../../firebase/database'
-import { Observable } from "rxjs";
+
 
 
 export function bloodRequest(requiredblood){
 dispatch =>{
     dispatch(BloodRequest());
-    return db.database.ref('/user').orderByChild('isDonor').equalTo(true).once('value',snapshot=>{
+    return db.database.ref('/user').orderByChild('isDonor').equalTo(true).on('value',snapshot=>{
+
+        console.log(snapshot.val(),"...............")
+
         const donor = [];
-        snapshot.forEach(childSnapshot=>{
-            donor.push(childSnapshot.val());
-        })
+        console.log('fareed',donor)
 dispatch(BloodRequestSuccess(donor))
     });
 }

@@ -5,6 +5,8 @@
     import SelectField from 'material-ui/SelectField';
     import MenuItem from 'material-ui/MenuItem';
     import AppBar from 'material-ui/AppBar';
+    import{ Link }from 'react-router'
+    import Drawer from 'material-ui/Drawer';
 
 const AppStyle = {
     textAlign:'center',
@@ -28,9 +30,11 @@ const styles = {
     class SignUp extends Component{
         BloodGroups;
     constructor(props){
-        super(props)
+        super(props);
+        // this.state = {open: false};
         this.BloodGroups=["A+","A-",'B+','B-','AB','O+',"O-"]
         this.state={
+            open:false,
             name:'',
             
             age:'',
@@ -45,7 +49,7 @@ const styles = {
         this.handelInput=this.handelInput.bind(this)
         this.inputHandling=this.inputHandling.bind(this)
     }
-    
+     handleToggle = () => this.setState({open: !this.state.open});
     handelBloodValue=(e,index,value)=>{
         this.setState({bloodGroup:value})
     }
@@ -76,7 +80,8 @@ const name = target.name;
 
 
 this.setState({
-    [name]:value
+    [name]:value,
+   // open : !this.state.open
 })
 
     }
@@ -89,6 +94,7 @@ this.setState({
  <AppBar
     title="Personal Information"
     style={AppStyle}
+    onTouchTap={this.handleToggle}
    // style={{color:'#212121'}}
     iconClassNameRight="muidocs-icon-navigation-expand-more"
   />
@@ -200,6 +206,45 @@ this.setState({
     </form>
     </Paper>
       </center>
+
+
+ <Drawer width={300} openSecondary={false} open={this.state.open} >
+          <AppBar title="Dashboard" />
+
+    <img src="https://upload.wikimedia.org/wikipedia/en/0/0a/Mother_Blood_Bank_Logo.png" height='200' width='260' alt="invent"/>
+    <br/>
+    <br/>         <Link to='/dashboard/addproducts'> <RaisedButton
+        fullWidth
+          style={styles}
+          onTouchTap={this.handleTouchTap}
+       
+          label="Home"
+          primary={false}
+        /></ Link><br /><br /><br />
+        
+
+        <Link to='/dashboard/createStore'> <RaisedButton
+        fullWidth
+          style={styles}
+          onTouchTap={this.handleTouchTap}
+       
+          label="View Donater"
+          primary={false}
+        /></ Link><br /><br /><br />
+        <Link to='/dashboard/addpurchaseDetail'> <RaisedButton
+        fullWidth
+          style={styles}
+          onTouchTap={this.handleTouchTap}
+
+          label="Log Out"
+          primary={false}
+        /></ Link><br /><br /><br />
+
+        </Drawer>
+     
+
+
+
     </div>
 
 

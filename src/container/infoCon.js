@@ -1,8 +1,8 @@
 import React,{Component} from 'react'
-import SignUp from '../component/signup'
+import SignUp from '../component/info'
 import {connect} from 'react-redux'
 import {initialState} from '../store/action/initialState'
-import {signupRequest} from '../store/action/signupAct'
+import {signupRequest} from '../store/action/infoAct'
 import * as db from '../firebase/database'
 
   function  mapStateToProps(state){

@@ -18,7 +18,7 @@ class RequireBlood extends Component{
           this.allDonors = [];
         this.state = {
 
-           
+           application:'',
 
             requireBlood :'A+'
         }
@@ -28,47 +28,47 @@ class RequireBlood extends Component{
     }
 
  componentDidMount() {
-        //this.props.loadUserRequest();
+        this.props.userData();
         //This is called for Loading Initial State
-        this.props. BLOODREQUEST();
+        this.props.BLOODREQUEST();
     }
 
- handleRequiredTypeChange (event, index, value) { 
+ handleRequiredTypeChange =(event, index, value)=> { 
      this.setState({ bloodGroup: value }); console.log(value) };
 checkBlood(currentBlood){
-if(this.state.requireBlood=='AB+'){
+if(this.state.bloodGroup=='AB+'){
     if(currentBlood=='O-'|| currentBlood=='O+'|| currentBlood=='AB+'){
         return true;
 }}
 
-if(this.state.requireBlood=='A+'){
+if(this.state.bloodGroup=='A+'){
     if(currentBlood=='O-'|| currentBlood=='O+'|| currentBlood=='A+'|| currentBlood=='A-'){
         return true;
     }
 }
-if(this.state.requireBlood=='A-'){
+if(this.state.bloodGroup=='A-'){
     if(currentBlood=='O-'||  currentBlood=='A-'){
         return true;
     }
 }
-if(this.state.requireBlood=='B+'){
+if(this.state.bloodGroup=='B+'){
     if(currentBlood=='O-'|| currentBlood=='O+'|| currentBlood=='B+'|| currentBlood=='B-'){
         return true;
     }
 }
 
-if(this.state.requireBlood=='B-'){
+if(this.state.bloodGroup=='B-'){
     if(currentBlood=='O-'||  currentBlood=='B-'){
         return true;
     }
 }
 
-if(this.state.requireBlood=='O+'){
+if(this.state.bloodGroup=='O+'){
     if(currentBlood=='O-'|| currentBlood=='O+'){
         return true;
     }
 }
-if(this.state.requireBlood=='O-'){
+if(this.state.bloodGroup=='O-'){
     if(currentBlood=='O-'){
         return true;
     }
@@ -83,7 +83,7 @@ render(){
          return(
    
         <div>
-
+<center>
 
  <SelectField
           ref='bloodGroup'
@@ -94,6 +94,7 @@ render(){
           value={this.state.bloodGroup}
           onChange={this.handleRequiredTypeChange}
         >
+        
 { 
     this.bloodgroups.map(bldgrop=>{
     return<MenuItem key={bldgrop} value={bldgrop} primaryText={bldgrop} />
@@ -104,6 +105,7 @@ render(){
 }
 
         </SelectField>
+        </center>
 <div>   
 
  <Table>
