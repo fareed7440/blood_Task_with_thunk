@@ -30,8 +30,8 @@ class Home extends Component {
     title='BLOOD BANK'
     iconClassNameRight="muidocs-icon-navigation-expand-more"
   >
-        <Link to="/signuppCon" ><RaisedButton label="Login" primary={true} style={{margin:"12px"}} /> </Link>
-         <Link to="/loginCon" ><RaisedButton label="Sign Up" primary={true}style={{margin:"12px"}}  /></Link>
+        <Link to="/signuppCon" ><RaisedButton label="Sign Up" primary={true} style={{margin:"12px"}} /> </Link>
+         <Link to="/loginCon" ><RaisedButton label="Login" primary={true}style={{margin:"12px"}}  /></Link>
      </AppBar>
      
      
@@ -49,7 +49,7 @@ class Home extends Component {
     <br/> <br/>
         
 
-        <Link to='/dashboard/createStore'> <RaisedButton
+        <Link to='requireBloodCon'> <RaisedButton
         fullWidth
           style={styles}
           onTouchTap={this.handleTouchTap}

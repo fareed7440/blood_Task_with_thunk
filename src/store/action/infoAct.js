@@ -5,18 +5,31 @@ export function signupRequest(signData){
     return dispatch=>{
         dispatch(signUpReQ());
 
+                return db.database.ref('/user/').push(signData).then((data) => {
+                    return db.database.ref('/user').orderByChild('isDonar').once('value', snap => {
+                        const todo = [];
+                        snap.forEach(childSnapshot => {
+                            todo.push(childSnapshot.val());
+                        })
+                        alert("You have been added to Donar list.");
+                        dispatch(signUpReQSuccess(todo))
+                    });
+                });
+            } 
+        
 
 
 
-         return db.database.ref('/user/').push(signData).then((data)=>{
-             alert ('sucessfully added')
-        dispatch(signUpReQSuccess(data));
-         })
-         .catch(function(error){
-             alert('sory you did some bund in your code')
-           dispatch(signupRequestfialed());
-         })
-       // ) 
+
+//   return db.database.ref('/user/').push(signData).then((data)=>{
+//              alert ('sucessfully added')
+//         dispatch(signUpReQSuccess(data));
+//          })
+//          .catch(function(error){
+//              alert('sory you did some bund in your code')
+//            dispatch(signupRequestfialed());
+//          })
+//        // ) 
        
         
     //    db.database.ref("/user").push(signData).then((data)=>{
@@ -51,7 +64,7 @@ export function signupRequest(signData){
     //          alert('errrrrrrrrooroorrrrr')
     //          dispatch(signupRequestfialed(error));
     //  })
-     } 
+     
 }//main
 
 

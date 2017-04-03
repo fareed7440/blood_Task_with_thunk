@@ -213,7 +213,7 @@ this.setState({
 
     <img src="https://upload.wikimedia.org/wikipedia/en/0/0a/Mother_Blood_Bank_Logo.png" height='200' width='260' alt="invent"/>
     <br/>
-    <br/>         <Link to='/dashboard/addproducts'> <RaisedButton
+    <br/>         <Link to='home'> <RaisedButton
         fullWidth
           style={styles}
           onTouchTap={this.handleTouchTap}
@@ -223,7 +223,7 @@ this.setState({
         /></ Link><br /><br /><br />
         
 
-        <Link to='/dashboard/createStore'> <RaisedButton
+        <Link to='requireBloodCon'> <RaisedButton
         fullWidth
           style={styles}
           onTouchTap={this.handleTouchTap}
@@ -231,7 +231,7 @@ this.setState({
           label="View Donater"
           primary={false}
         /></ Link><br /><br /><br />
-        <Link to='/dashboard/addpurchaseDetail'> <RaisedButton
+        <Link to='home'> <RaisedButton
         fullWidth
           style={styles}
           onTouchTap={this.handleTouchTap}
