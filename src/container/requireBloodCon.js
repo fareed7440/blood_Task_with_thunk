@@ -1,30 +1,24 @@
 import RequireBlood from '../component/requireBlood'
-import {initialState} from '../store/action/initialState'
-//import {bloodRequest} from '../store/action/requireBloodAct'
-import {bloodRequest} from '../store/action/requireBloodAct'
-import {connect} from 'react-redux'
-import {userRequest} from '../store/action/userData'
-function mapStateToProps(state){
+import { initialState } from '../store/action/initialState'
+import { bloodRequest } from '../store/action/requireBloodAct'
+import { connect } from 'react-redux'
+import { userRequest } from '../store/action/userData'
 
-return{
-    application : state.application
-}
-}
+function mapStateToProps(state) {
 
-
-function mapDispatchtoProps(dispatch){
-    return{
-         INITIALSTATE:()=>dispatch(initialState()),
-
-        bloodRequest :(userData)=>dispatch(bloodRequest(userData)),
-
-        bloodRequests :(userData)=>dispatch(bloodRequest(userData)),
-     //   bloodReq11 :(userData)=>dispatch(bloodReq(userData)),
-        
-
-        userData : () => dispatch(userRequest())
+    return {
+        application: state.application
     }
 }
 
-const RequireBloodCon = connect (mapStateToProps,mapDispatchtoProps)(RequireBlood)
+
+function mapDispatchtoProps(dispatch) {
+    return {
+
+        BloodRequest: (userData) => dispatch(bloodRequest(userData))
+
+    }
+}
+
+const RequireBloodCon = connect(mapStateToProps, mapDispatchtoProps)(RequireBlood)
 export default RequireBloodCon;

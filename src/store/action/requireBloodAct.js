@@ -1,91 +1,137 @@
 import Actions from './actionTypes'
 import * as db from '../../firebase/database'
 
-
-
-
-export function bloodRequest(bloodgroup){
-
-
-return dispatch => {
-    console.log("your userdetatilaction is working properly")
-    console.log(bloodgroup)
-    var arr = [];
-    var donors = []
-    switch (bloodgroup) {
-      case "A+":
-        donors.push(['A+', 'O+', 'A-', 'O-']);
-
-        break;
-
-      case "B+": {
-        donors.push(['B+', 'O+', 'B-', 'O-']);
-        break;
-      }
-      case "AB+": {
-        donors.push(['AB+', 'AB-', 'O+', 'O-', 'A+', 'A-', 'B+', 'B-']);
-        break;
-      }
-      case "O+": {
-        donors.push(['O+', 'O-']);
-        break;
-      }
-      case "A-": {
-        donors.push(['A-', 'O-']);
-        break;
-      }
-      case "B-": {
-        donors.push(['B-', 'O-']);
-        break;
-      }
-      case "AB-": {
-        donors.push(['AB-', 'O-', 'A-', 'B-']);
-        break;
-      }
-      case "O-": {
-        donors.push(['O-']);
-        break;
-      }
-    }
-    donors.map((val, index) => {
-      return val.map((v, i) => {
-        return (
-
-          db.database.ref().child('Bloodgroup/' + v + '/').on('value', (data) => {
-            var obj = data.val();
-
-
-            console.log(obj)
-
-            for (var prop in obj) {
-
-              arr.push(obj[prop]);
-              console.log(arr);
-
-            }
-
-             dispatch(BloodRequestSuccess(arr))
-
-
-
-
-
-          })
-        )
+export function bloodRequest(bloodgroup) {
+  return (dispatch) => {
+    dispatch(BloodRequest());
+    return db.database.ref('/userBlood').orderByChild('bloodGroup').equalTo(bloodgroup).once('value', snapshot => {
+      var array =[];
+      snapshot.forEach(ChildSnapshot =>{
+        var data = ChildSnapshot.val();
+        array.push(data)
       })
-    })
-
-   
-    }
-  
+      dispatch(BloodRequestSuccess(array))
+    });
+  }
 }
+function BloodRequest() {
+
+  return {
+    type: Actions.BLOODREQUEST
+  }
+}
+
+function BloodRequestSuccess(data) {
+  return {
+    type: Actions.BLOODREQUESTSUCCESS,
+    data
+  }
+
+}
+
+// function BloodRequestFailed() {
+//   return {
+//     type: Actions.BLOODREQUESTFAILED
+//   }
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// return dispatch => {
+//     console.log("your userdetatilaction is working properly")
+//     console.log(bloodgroup)
+//     var arr = [];
+//     var donors = []
+//     switch (bloodgroup) {
+//       case "A+":
+//         donors.push(['A+', 'O+', 'A-', 'O-']);
+
+//         break;
+
+//       case "B+": {
+//         donors.push(['B+', 'O+', 'B-', 'O-']);
+//         break;
+//       }
+//       case "AB+": {
+//         donors.push(['AB+', 'AB-', 'O+', 'O-', 'A+', 'A-', 'B+', 'B-']);
+//         break;
+//       }
+//       case "O+": {
+//         donors.push(['O+', 'O-']);
+//         break;
+//       }
+//       case "A-": {
+//         donors.push(['A-', 'O-']);
+//         break;
+//       }
+//       case "B-": {
+//         donors.push(['B-', 'O-']);
+//         break;
+//       }
+//       case "AB-": {
+//         donors.push(['AB-', 'O-', 'A-', 'B-']);
+//         break;
+//       }
+//       case "O-": {
+//         donors.push(['O-']);
+//         break;
+//       }
+//     }
+//     donors.map((val, index) => {
+//       return val.map((v, i) => {
+//         return (
+
+//           db.database.ref().child('Bloodgroup/' + v + '/').on('value', (data) => {
+//             var obj = data.val();
+
+
+//             console.log(obj)
+
+//             for (var prop in obj) {
+
+//               arr.push(obj[prop]);
+//               console.log(arr);
+
+//             }
+
+//              dispatch(BloodRequestSuccess(arr))
+
+
+
+
+
+//           })
+//         )
+//       })
+//     })
+
+
+//     }
+
+// }
 
 
 
 // export default class BloodAction {
 
 //     static bloodReq(bloodGroup) {
-     
+
 //        return (dispatch) => {
 
 // //console.log("your userdetatilaction is working properly")
@@ -159,7 +205,7 @@ return dispatch => {
             //     dispatch(this.BloodRequestSuccess(todo)
             //     )
             // });
-         
+
         // static bloodReq(req) {
         //     return () => {
         //         alert()
@@ -182,26 +228,26 @@ return dispatch => {
     //}
 
 
-  function BloodRequest() {
-        //alert("26")
-        return {
-            type: Actions.BLOODREQUEST
-        }
-    }
+//   function BloodRequest() {
+//         //alert("26")
+//         return {
+//             type: Actions.BLOODREQUEST
+//         }
+//     }
 
-  function BloodRequestSuccess(data) {
-    return {
-        type: Actions.BLOODREQUESTSUCCESS,
-        data
-    }
+//   function BloodRequestSuccess(data) {
+//     return {
+//         type: Actions.BLOODREQUESTSUCCESS,
+//         data
+//     }
 
-}
+// }
 
-function BloodRequestFailed(){
-  return{
-    type:Actions.BLOODREQUESTFAILED
-  }
-}
+// function BloodRequestFailed(){
+//   return{
+//     type:Actions.BLOODREQUESTFAILED
+//   }
+// }
 
 
 
@@ -228,19 +274,19 @@ function BloodRequestFailed(){
 // }
 
 
-  function BloodRequest(){
-    return{
-        type:Actions.BLOODREQUEST
-    }
-}
-  function BloodRequestSuccess(data){
-    return{
-        type:Actions.BLOODREQUESTSUCCESS,
-        data
-    }
-}
-  function BloodRequestFailed(){
-    return{
-        type:Actions.BLOODREQUESTFAILED
-    }
-  }
+//   function BloodRequest(){
+//     return{
+//         type:Actions.BLOODREQUEST
+//     }
+// }
+//   function BloodRequestSuccess(data){
+//     return{
+//         type:Actions.BLOODREQUESTSUCCESS,
+//         data
+//     }
+// }
+//   function BloodRequestFailed(){
+//     return{
+//         type:Actions.BLOODREQUESTFAILED
+//     }
+//   }

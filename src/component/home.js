@@ -49,7 +49,7 @@ class Home extends Component {
     <br/> <br/>
         
 
-        <Link to='/dashboard/createStore'> <RaisedButton
+        <Link to='/requireBloodCon'> <RaisedButton
         fullWidth
           style={styles}
           onTouchTap={this.handleTouchTap}
@@ -57,6 +57,23 @@ class Home extends Component {
           label="View Donater"
           primary={false}
         /></ Link><br /><br /><br />
+         <Link to='/loginCon'> <RaisedButton
+        fullWidth
+          style={styles}
+          onTouchTap={this.handleTouchTap}
+       
+          label="Login"
+          primary={false}
+        /></ Link><br /><br /><br />
+ <Link to='/signuppCon'> <RaisedButton
+        fullWidth
+          style={styles}
+          onTouchTap={this.handleTouchTap}
+       
+          label="SignUp"
+          primary={false}
+        /></ Link><br /><br /><br />
+
 
         </Drawer>
  

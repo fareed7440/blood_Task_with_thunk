@@ -1,7 +1,6 @@
 import React,{Component} from 'react'
 import SignUp from '../component/info'
 import {connect} from 'react-redux'
-import {initialState} from '../store/action/initialState'
 import {signupRequest} from '../store/action/infoAct'
 import * as db from '../firebase/database'
 
@@ -15,7 +14,7 @@ return{
 
 function mapDispatchToProps(dispatch){
     return{
-        INITIALSTATE:()=>dispatch(initialState()),
+      
         signupRequest:(userData)=>dispatch(signupRequest(userData))
     }
 }
