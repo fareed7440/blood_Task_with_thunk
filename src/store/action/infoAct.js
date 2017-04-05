@@ -5,6 +5,30 @@ export function signupRequest(signData){
     return dispatch=>{
         dispatch(signUpReQ());
 
+<<<<<<< Updated upstream
+=======
+        return db.database.ref().child('/userBlood'+signData.bloodGroup+'/').push(signData)
+.then((data)=>{
+alert('successFully addad')
+dispatch(signUpReQSuccess(data))
+})
+.catch((error)=>{
+    dispatch(signupRequestfialed(error));
+})
+                // return db.database.ref('/user/').push(signData).then((data) => {
+                //     return db.database.ref('/user').orderByChild('isDonar').once('value', snap => {
+                //         const todo = [];
+                //         snap.forEach(childSnapshot => {
+                //             todo.push(childSnapshot.val());
+                //         })
+                //         alert("You have been added to Donar list.");
+                //         dispatch(signUpReQSuccess(todo))
+                //     });
+                // });
+            } 
+        
+
+>>>>>>> Stashed changes
 
 
 
