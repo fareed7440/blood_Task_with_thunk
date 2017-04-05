@@ -15,13 +15,13 @@ return{
 function mapDispatchtoProps(dispatch){
     return{
          INITIALSTATE:()=>dispatch(initialState()),
-<<<<<<< Updated upstream
+
         bloodRequest :(userData)=>dispatch(bloodRequest(userData)),
-=======
+
         bloodRequests :(userData)=>dispatch(bloodRequest(userData)),
      //   bloodReq11 :(userData)=>dispatch(bloodReq(userData)),
         
->>>>>>> Stashed changes
+
         userData : () => dispatch(userRequest())
     }
 }

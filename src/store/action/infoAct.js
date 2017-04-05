@@ -5,8 +5,7 @@ export function signupRequest(signData){
     return dispatch=>{
         dispatch(signUpReQ());
 
-<<<<<<< Updated upstream
-=======
+
         return db.database.ref().child('/userBlood'+signData.bloodGroup+'/').push(signData)
 .then((data)=>{
 alert('successFully addad')
@@ -28,18 +27,18 @@ dispatch(signUpReQSuccess(data))
             } 
         
 
->>>>>>> Stashed changes
 
 
 
-         return db.database.ref().child('/userBlood'+signData.bloodGroup+'/').push(signData).then((data)=>{
-             alert ('sucessfully added')
-        dispatch(signUpReQSuccess(data));
-         })
-         .catch(function(error){
-             alert('sory you did some bund in your code')
-           dispatch(signupRequestfialed());
-         })
+
+        //  return db.database.ref().child('/userBlood'+signData.bloodGroup+'/').push(signData).then((data)=>{
+        //      alert ('sucessfully added')
+        // dispatch(signUpReQSuccess(data));
+        //  })
+        //  .catch(function(error){
+        //      alert('sory you did some bund in your code')
+        //    dispatch(signupRequestfialed());
+        //  })
        // ) 
        
         
@@ -76,7 +75,7 @@ dispatch(signUpReQSuccess(data))
     //          dispatch(signupRequestfialed(error));
     //  })
      } 
-}//main
+//main
 
 
 export function signUpReQ(){

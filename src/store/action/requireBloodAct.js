@@ -2,16 +2,12 @@ import Actions from './actionTypes'
 import * as db from '../../firebase/database'
 
 
-<<<<<<< Updated upstream
+
 
 export function bloodRequest(bloodgroup){
 
 
 return dispatch => {
-=======
-export function bloodRequest(bloodgroup) {
-  return dispatch => {
->>>>>>> Stashed changes
     console.log("your userdetatilaction is working properly")
     console.log(bloodgroup)
     var arr = [];
@@ -54,14 +50,10 @@ export function bloodRequest(bloodgroup) {
     donors.map((val, index) => {
       return val.map((v, i) => {
         return (
-<<<<<<< Updated upstream
-          db.database.ref().child('userBlood/' + v + '/').on('value', (data) => {
-              //console.log('.......',snap.val())
-           var obj = data.val();
-=======
+
           db.database.ref().child('Bloodgroup/' + v + '/').on('value', (data) => {
             var obj = data.val();
->>>>>>> Stashed changes
+
 
             console.log(obj)
 
@@ -71,22 +63,22 @@ export function bloodRequest(bloodgroup) {
               console.log(arr);
 
             }
-<<<<<<< Updated upstream
+
              dispatch(BloodRequestSuccess(arr))
-=======
 
-dispatch(BloodRequestSuccess(arr))
 
->>>>>>> Stashed changes
+
+
+
           })
         )
       })
     })
-<<<<<<< Updated upstream
-   
-=======
-  }}
 
+   
+    }
+  
+}
 
 
 
@@ -202,7 +194,7 @@ dispatch(BloodRequestSuccess(arr))
         type: Actions.BLOODREQUESTSUCCESS,
         data
     }
->>>>>>> Stashed changes
+
 }
 
 function BloodRequestFailed(){
@@ -210,14 +202,14 @@ function BloodRequestFailed(){
     type:Actions.BLOODREQUESTFAILED
   }
 }
-<<<<<<< Updated upstream
-=======
+
+
 
 // static BloodRequestFailed(){  
 //       return {
 //        type: Actions.BLOODREQUESTFAILED
 //     }
->>>>>>> Stashed changes
+
 
 // dispatch =>{
 //     dispatch(BloodRequest());

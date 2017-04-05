@@ -1,16 +1,4 @@
-<<<<<<< Updated upstream
-import React,{Component} from 'react'
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
- import SelectField from 'material-ui/SelectField';
- import MenuItem from 'material-ui/MenuItem';
- import DropDownMenu from 'material-ui/DropDownMenu';
-//import MenuItem from 'material-ui/MenuItem';
-import {Link} from 'react-router'
-import RaisedButton from 'material-ui/RaisedButton';
-class RequireBlood extends Component{
 
-    constructor(props) {
-=======
 import React, { Component } from 'react'
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import SelectField from 'material-ui/SelectField';
@@ -28,13 +16,13 @@ class RequireBlood extends Component {
 
 
   constructor(props) {
->>>>>>> Stashed changes
+ 
         super(props);
         this.state={
             value: 1,
             blood: '',
         }
-<<<<<<< Updated upstream
+
     }
 
    
@@ -53,7 +41,7 @@ class RequireBlood extends Component {
 
     render() {
 const application = this.props&&this.props.application&&this.props.application.allBlood ?this.props.application.allBlood:[];
-=======
+
     }
 
    
@@ -491,8 +479,7 @@ render(){
 }//main
 */
 
-<<<<<<< Updated upstream
 
-export default RequireBlood;*/
-=======
->>>>>>> Stashed changes
+
+
+
