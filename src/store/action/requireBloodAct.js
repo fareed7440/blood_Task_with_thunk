@@ -1,17 +1,17 @@
 import Actions from './actionTypes'
 import * as db from '../../firebase/database'
 
-export default class BloodAction {
 
-    static bloodReq(bloodGroup) {
-     
-       return (dispatch) => {
 
-//console.log("your userdetatilaction is working properly")
-   // console.log(bloodgroup)
+export function bloodRequest(bloodgroup){
+
+
+return dispatch => {
+    console.log("your userdetatilaction is working properly")
+    console.log(bloodgroup)
     var arr = [];
     var donors = []
-    switch (bloodGroup) {
+    switch (bloodgroup) {
       case "A+":
         donors.push(['A+', 'O+', 'A-', 'O-']);
 
@@ -49,8 +49,9 @@ export default class BloodAction {
     donors.map((val, index) => {
       return val.map((v, i) => {
         return (
-          db.database().ref().child('user/' + v + '/').on('value', (data) => {
-            var obj = data.val();
+          db.database.ref().child('userBlood/' + v + '/').on('value', (data) => {
+              //console.log('.......',snap.val())
+           var obj = data.val();
 
             console.log(obj)
 
@@ -60,96 +61,45 @@ export default class BloodAction {
               console.log(arr);
 
             }
+             dispatch(BloodRequestSuccess(arr))
           })
         )
       })
     })
- dispatch(this.BloodRequestSuccess(arr))
+   
+}
+}
+
+// dispatch =>{
+//     dispatch(BloodRequest());
+//     return db.database.ref('/user').orderByChild('isDonor').equalTo(true).on('value',snapshot=>{
+
+//         console.log(snapshot.val(),"...............")
+
+//         const donor = [];
+//         console.log('fareed',donor)
+// dispatch(BloodRequestSuccess(donor))
+//     });
+// }
 
 
-            // dispatch(BloodAction.BloodRequest());
-            // return db.database.ref('/user').on('value', snapshot => {
-            //     console.log(snapshot.val(), "...............")
-            //     const todo = [];
-            //     snapshot.forEach(childSnapshot =>{
-            //         todo.push(childSnapshot.val());
-            //     })
-            //     console.log('fareed', todo)
-            //     dispatch(this.BloodRequestSuccess(todo)
-            //     )
-            // });
-         }
-        // static bloodReq(req) {
-        //     return () => {
-        //         alert()
-        //     }
 
-        // return (dispatch) => {
-        //     alert()
-        //     dispatch(BloodAction.BloodRequest());
-        //     return db.database.ref('/user').orderByChild('isDonor').equalTo(true).on('value', snapshot => {
-
-        //         console.log(snapshot.val(), "...............")
-
-        //         const donor = [];
-        //         console.log('fareed', donor)
-        //         dispatch(BloodRequestSuccess(donor))
-        //     });
+// }
 
 
-        // }
+  function BloodRequest(){
+    return{
+        type:Actions.BLOODREQUEST
     }
-
-
-
-    static BloodRequest() {
-        //alert("26")
-        return {
-            type: Actions.BLOODREQUEST
-        }
-    }
-
-    static BloodRequestSuccess(data) {
-    return {
-        type: Actions.BLOODREQUESTSUCCESS,
+}
+  function BloodRequestSuccess(data){
+    return{
+        type:Actions.BLOODREQUESTSUCCESS,
         data
     }
 }
-}
-// static BloodRequestFailed(){  
-//       return {
-//        type: Actions.BLOODREQUESTFAILED
-//     }
-
-// }
-
-// export function bloodRequest(requiredblood) {
-//     console.log("=============" , requiredblood)
-//     dispatch => {
-//         // dispatch(BloodRequest());
-//         // return db.database.ref('/user').orderByChild('isDonor').equalTo(true).on('value', snapshot => {
-
-//         //     console.log(snapshot.val(), "...............")
-
-//         //     const donor = [];
-//         //     console.log('fareed', donor)
-//         //     dispatch(BloodRequestSuccess(donor))
-//         // });
-//     }
-
-
-
-// }
-
-
-// export function BloodRequestSuccess(data) {
-//     return {
-//         type: Actions.BLOODREQUESTSUCCESS,
-//         data
-//     }
-// }
-// export function BloodRequestFailed() {
-//     return {
-//         type: Actions.BLOODREQUESTFAILED
-//     }
- 
+  function BloodRequestFailed(){
+    return{
+        type:Actions.BLOODREQUESTFAILED
+    }
+  }
