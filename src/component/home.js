@@ -27,11 +27,12 @@ class Home extends Component {
       <div>
      <AppBar
      onTouchTap={this.handleToggle}
+  
     title='BLOOD BANK'
     iconClassNameRight="muidocs-icon-navigation-expand-more"
   >
-        <Link to="/signuppCon" ><RaisedButton label="Login" primary={true} style={{margin:"12px"}} /> </Link>
-         <Link to="/loginCon" ><RaisedButton label="Sign Up" primary={true}style={{margin:"12px"}}  /></Link>
+        <Link to="/signuppCon" ><RaisedButton label="Sign Up" primary={true} style={{margin:"12px"}} /> </Link>
+         <Link to="/loginCon" ><RaisedButton label="Login" primary={true}style={{margin:"12px"}}  /></Link>
      </AppBar>
      
      

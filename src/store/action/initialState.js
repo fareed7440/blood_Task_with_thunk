@@ -1,17 +1,17 @@
 import Actions from './actionTypes'
 import * as db from '../../firebase/database'
 
-export function initialState(){
+export function initialState() {
     return
-        dispatch=>{
-          dispatch ( initialStateAction())
-        
-    }
-    }
+    dispatch => {
+        dispatch(initialStateAction())
 
-function initialStateAction(){
-    return{
-      type:Actions.INITIALSTATE
+    }
+}
+
+function initialStateAction() {
+    return {
+        type: Actions.INITIALSTATE
     };
 }
 

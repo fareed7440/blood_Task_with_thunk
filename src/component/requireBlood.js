@@ -2,82 +2,101 @@ import React, { Component } from 'react'
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import AppBar from 'material-ui/AppBar';
 //import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router'
 //import BloodAction from '../store/action/requireBloodAct'
-
+const AppStyle = {
+    textAlign:'center',
+   // backgroundColor:'transparent',
+   // textColor:'#212121'
+}
 export class BloodRequired extends Component {
 
     constructor(props) {
         super(props);
         this.bloodgroups = [
-            "A+",
-            "B+",
-            "AB+",
-            "O+", 
-            "A-",
-            "B-",
-            "AB-",
-            "O-"
+            "A",
+            "B",
+            "AB",
+            "O", 
+            
         ]
-        this.state = { requireBlood: 'A+' }
+        this.allDonors = [];
+        this.state = { requireBlood: 'A', open :'false' }
         this.handleRequiredTypeChange = this.handleRequiredTypeChange.bind(this);
-       this.checkBlood = this.checkBlood.bind(this);
+      // this.checkBlood = this.checkBlood.bind(this);
     }
 
     handleRequiredTypeChange = (event, index, value) => { this.setState({ requireBlood: value }); this.props.BloodRequest(value); };
+//handleBloodRequest=(event,index,value)=>{
+//     this.props.updateBlood(event)
 
-    checkBlood(currentBlood) {
-        if (this.state.bloodGroup == 'AB+') {
-            if (currentBlood == 'O-' || currentBlood == 'O+' || currentBlood == 'AB+') {
-                return true;
-            }
-        }
+// }
+    // checkBlood(currentBlood) {
+    //     if (this.state.bloodGroup == 'AB+') {
+    //         if (currentBlood == 'O-' || currentBlood == 'O+' || currentBlood == 'AB+') {
+    //             return true;
+    //         }
+    //     }
 
-        if (this.state.bloodGroup == 'A+') {
-            if (currentBlood == 'O-' || currentBlood == 'O+' || currentBlood == 'A+' || currentBlood == 'A-') {
-                return true;
-            }
-        }
-        if (this.state.bloodGroup == 'A-') {
-            if (currentBlood == 'O-' || currentBlood == 'A-') {
-                return true;
-            }
-        }
-        if (this.state.bloodGroup == 'B+') {
-            if (currentBlood == 'O-' || currentBlood == 'O+' || currentBlood == 'B+' || currentBlood == 'B-') {
-                return true;
-            }
-        }
+    //     if (this.state.bloodGroup == 'A+') {
+    //         if (currentBlood == 'O-' || currentBlood == 'O+' || currentBlood == 'A+' || currentBlood == 'A-') {
+    //             return true;
+    //         }
+    //     }
+    //     if (this.state.bloodGroup == 'A-') {
+    //         if (currentBlood == 'O-' || currentBlood == 'A-') {
+    //             return true;
+    //         }
+    //     }
+    //     if (this.state.bloodGroup == 'B+') {
+    //         if (currentBlood == 'O-' || currentBlood == 'O+' || currentBlood == 'B+' || currentBlood == 'B-') {
+    //             return true;
+    //         }
+    //     }
 
-        if (this.state.bloodGroup == 'B-') {
-            if (currentBlood == 'O-' || currentBlood == 'B-') {
-                return true;
-            }
-        }
+    //     if (this.state.bloodGroup == 'B-') {
+    //         if (currentBlood == 'O-' || currentBlood == 'B-') {
+    //             return true;
+    //         }
+    //     }
 
-        if (this.state.bloodGroup == 'O+') {
-            if (currentBlood == 'O-' || currentBlood == 'O+') {
-                return true;
-            }
-        }
-        if (this.state.bloodGroup == 'O-') {
-            if (currentBlood == 'O-') {
-                return true;
-            }
-        }
+    //     if (this.state.bloodGroup == 'O+') {
+    //         if (currentBlood == 'O-' || currentBlood == 'O+') {
+    //             return true;
+    //         }
+    //     }
+    //     if (this.state.bloodGroup == 'O-') {
+    //         if (currentBlood == 'O-') {
+    //             return true;
+    //         }
+    //     }
 
 
-    }
+   // }
 
     render() {
 
         const application = this.props && this.props.application && this.props.application.allBlood ? this.props.application.allBlood : [];
         console.log("====================================", application)
         return (
-
+ 
             <div>
+ <AppBar
+    title="View Donator"
+    style={AppStyle}
+    
+   // style={{color:'#212121'}}
+    iconClassNameRight="muidocs-icon-navigation-expand-more"
+  >
+   <Link to="/home" ><RaisedButton label="home" primary={true} style={{margin:"12px"}} /> </Link>
+   </AppBar>
+  
+  
+  <br/><br/>
+
                 <center>
                     <SelectField
                         ref='bloodGroup'
@@ -97,7 +116,7 @@ export class BloodRequired extends Component {
                     </SelectField>
                 </center>
                 <div>
-
+{application && application.length>0 ? 
                     <Table>
                         <TableHeader>
                             <TableRow>
@@ -112,7 +131,7 @@ export class BloodRequired extends Component {
                         </TableHeader>
                         <TableBody>
                             {application.map((data, index) => {
-                                if(this.checkBlood())
+                              
                                 return (
                                     <TableRow key = {index}>
                                         <TableRowColumn>{data.name}</TableRowColumn>
@@ -128,6 +147,7 @@ export class BloodRequired extends Component {
 
                         </TableBody>
                     </Table>
+                    :null}
                 </div>
 
 

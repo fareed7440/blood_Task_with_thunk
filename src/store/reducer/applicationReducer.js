@@ -1,37 +1,42 @@
 import Actions from '../action/actionTypes'
 
-const InitialState =  {};
+const InitialState = {};
 
-function applicationReducer(state = InitialState, action){
-    switch(action.type){
-        case Actions.INITIALSTATE:{
+function applicationReducer(state = InitialState, action) {
+    switch (action.type) {
+        case Actions.INITIALSTATE: {
             return state;
         }
 
-        case Actions.SIGNUPREQUESTSUCCESS:{
-            var sign = Object.assign({},state,{user:action.data})
+        case Actions.SIGNUPREQUESTSUCCESS: {
+            var sign = Object.assign({}, state, { user: action.data })
             state = sign
-            return state; 
+            return state;
         }
 
-case Actions.SIGNUPPREQUESTSUCCESS:{
-    var Signn = Object.assign({},state,{user:action.data})
-    state = Signn
-    return state;
-}
+        case Actions.SIGNUPPREQUESTSUCCESS: {
+            var Signn = Object.assign({}, state, { user: action.data })
+            state = Signn
+            return state;
+        }
 
-case Actions.LOGINREQUESTSUCCESS:{
-    var login = Object.assign({},state,{user:action.data})
-    state= login
-    return state;
-}
-case Actions.BLOODREQUESTSUCCESS:{
-    var blood = Object.assign({},state,{allBlood:action.data})
-    state = blood
-    return state;
-}
+        case Actions.LOGINREQUESTSUCCESS: {
+            var login = Object.assign({}, state, { user: action.data })
+            state = login
+            return state;
+        }
+        case Actions.BLOODREQUESTSUCCESS: {
+            var blood = Object.assign({}, state, { allBlood: action.data })
+            state = blood
+            return state;
+        }
+        case Actions.UPDATEBLOODSUCCESS: {
+            var update = Object.assign({}, state, { allBlood: action.data })
+            state = update
+            return state;
+        }
         default:
-        return state
+            return state
     }
 }
 

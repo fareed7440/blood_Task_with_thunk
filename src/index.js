@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
@@ -13,29 +13,30 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 import {
-  browserHistory, Router, Route, IndexRoute, IndexRedirect,Link, IndexLink} from 'react-router';
+  browserHistory, Router, Route, IndexRoute, IndexRedirect, Link, IndexLink
+} from 'react-router';
 
-export class RouterComponent extends Component{
-  render(){
-    return(
+export class RouterComponent extends Component {
+  render() {
+    return (
       <div>
-      <MuiThemeProvider>
+        <MuiThemeProvider>
           <Provider store={store}>
-            
+
             <Router history={browserHistory}>
               <Route path="/" component={Home}></Route>
               <Route path="/home" component={Home}>
-              
-              
-              
-              </Route> 
-                <Route path="/infoCon" component={SignupContainer}></Route> 
-                <Route path="/signuppCon" component={SignuppContainer}></Route>
-                <Route path="/loginCon" component={LogContainer}></Route>
-                 <Route path="/requireBloodCon" component={RequireBloodCon}></Route>
-                </Router>
-                </Provider>
-         </MuiThemeProvider>,
+
+
+
+              </Route>
+              <Route path="/infoCon" component={SignupContainer}></Route>
+              <Route path="/signuppCon" component={SignuppContainer}></Route>
+              <Route path="/loginCon" component={LogContainer}></Route>
+              <Route path="/requireBloodCon" component={RequireBloodCon}></Route>
+            </Router>
+          </Provider>
+        </MuiThemeProvider>,
         </div>
     )
   }
@@ -45,7 +46,7 @@ export class RouterComponent extends Component{
 
 ReactDOM.render(
 
-  < RouterComponent/>,
- 
+  < RouterComponent />,
+
   document.getElementById('root')
 );
