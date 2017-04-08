@@ -20,16 +20,8 @@ function applicationReducer(state = InitialState, action) {
             return state;
         }
 
-        case Actions.LOGINREQUESTSUCCESS: {
-            var login = Object.assign({}, state, { user: action.data })
-            state = login
-            return state;
-        }
-        case Actions.BLOODREQUESTSUCCESS: {
-            var blood = Object.assign({}, state, { allBlood: action.data })
-            state = blood
-            return state;
-        }
+      
+       
         case Actions.UPDATEBLOODSUCCESS: {
             var update = Object.assign({}, state, { allBlood: action.data })
             state = update

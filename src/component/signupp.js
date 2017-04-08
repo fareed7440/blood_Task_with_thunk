@@ -55,7 +55,8 @@ class Signupp extends Component {
     }
     handelInput = (e) => {
         const target = e.target;
-        const value = target.type === 'checked' ? target.checked : target.value;
+       // const value = target.type === 'checked' ? target.checked : target.value;
+       const value  = target.value;
         const name = target.name;
 
 

@@ -23,59 +23,17 @@ export class BloodRequired extends Component {
             "O", 
             
         ]
-        this.allDonors = [];
-        this.state = { requireBlood: 'A', open :'false' }
+       // this.allDonors = [];
+        this.state = { requireBlood: 'AB',}
         this.handleRequiredTypeChange = this.handleRequiredTypeChange.bind(this);
       // this.checkBlood = this.checkBlood.bind(this);
     }
 
-    handleRequiredTypeChange = (event, index, value) => { this.setState({ requireBlood: value }); this.props.BloodRequest(value); };
-//handleBloodRequest=(event,index,value)=>{
-//     this.props.updateBlood(event)
+    handleRequiredTypeChange = (event, index, value) => {
+         event.preventDefault();
+        
+         this.setState({ requireBlood: value }); this.props.BloodRequest(value); };
 
-// }
-    // checkBlood(currentBlood) {
-    //     if (this.state.bloodGroup == 'AB+') {
-    //         if (currentBlood == 'O-' || currentBlood == 'O+' || currentBlood == 'AB+') {
-    //             return true;
-    //         }
-    //     }
-
-    //     if (this.state.bloodGroup == 'A+') {
-    //         if (currentBlood == 'O-' || currentBlood == 'O+' || currentBlood == 'A+' || currentBlood == 'A-') {
-    //             return true;
-    //         }
-    //     }
-    //     if (this.state.bloodGroup == 'A-') {
-    //         if (currentBlood == 'O-' || currentBlood == 'A-') {
-    //             return true;
-    //         }
-    //     }
-    //     if (this.state.bloodGroup == 'B+') {
-    //         if (currentBlood == 'O-' || currentBlood == 'O+' || currentBlood == 'B+' || currentBlood == 'B-') {
-    //             return true;
-    //         }
-    //     }
-
-    //     if (this.state.bloodGroup == 'B-') {
-    //         if (currentBlood == 'O-' || currentBlood == 'B-') {
-    //             return true;
-    //         }
-    //     }
-
-    //     if (this.state.bloodGroup == 'O+') {
-    //         if (currentBlood == 'O-' || currentBlood == 'O+') {
-    //             return true;
-    //         }
-    //     }
-    //     if (this.state.bloodGroup == 'O-') {
-    //         if (currentBlood == 'O-') {
-    //             return true;
-    //         }
-    //     }
-
-
-   // }
 
     render() {
 

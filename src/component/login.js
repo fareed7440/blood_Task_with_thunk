@@ -47,7 +47,8 @@ class Login extends Component {
     }
     handelInput = (e) => {
         const target = e.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value
+       // const value = target.type === 'checkbox' ? target.checked : target.value
+       const value = target.value;
         const name = target.name;
 
 
@@ -73,7 +74,7 @@ class Login extends Component {
                             <br /><br />
                             <TextField
                                 hintText="Email"
-                                ref='email'
+                               ref='email'
                                 name='email'
                                 type='email'
                                 required={true}
@@ -82,9 +83,9 @@ class Login extends Component {
                             /><br /><br /><br />
                             <TextField
                                 hintText="Password"
-                                ref='password'
+                             ref='password'
                                 type='password'
-                                name='password'
+                               name='password'
 
                                 onChange={this.handelInput}
                                 floatingLabelText="Type Here"
