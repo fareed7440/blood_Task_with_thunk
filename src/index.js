@@ -25,11 +25,11 @@ export class RouterComponent extends Component {
 
             <Router history={browserHistory}>
               <Route path="/" component={Home}></Route>
-              <Route path="/home" component={Home}>
+              <Route path="/home" component={Home}/> 
 
 
 
-              </Route>
+             
               <Route path="/infoCon" component={SignupContainer}></Route>
               <Route path="/signuppCon" component={SignuppContainer}></Route>
               <Route path="/loginCon" component={LogContainer}></Route>

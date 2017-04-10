@@ -23,8 +23,8 @@ export class BloodRequired extends Component {
             "O", 
             
         ]
-       // this.allDonors = [];
-        this.state = { requireBlood: 'AB',}
+        this.allDonors = [];
+        this.state = { requireBlood: 'AB', open :'false' }
         this.handleRequiredTypeChange = this.handleRequiredTypeChange.bind(this);
       // this.checkBlood = this.checkBlood.bind(this);
     }
@@ -89,7 +89,7 @@ export class BloodRequired extends Component {
                         </TableHeader>
                         <TableBody>
                             {application.map((data, index) => {
-                              
+                              console.log('asasasa',application)
                                 return (
                                     <TableRow key = {index}>
                                         <TableRowColumn>{data.name}</TableRowColumn>

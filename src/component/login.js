@@ -47,8 +47,8 @@ class Login extends Component {
     }
     handelInput = (e) => {
         const target = e.target;
-       // const value = target.type === 'checkbox' ? target.checked : target.value
-       const value = target.value;
+        const value = target.type === 'checkbox' ? target.checked : target.value
+      // const value = target.value;
         const name = target.name;
 
 
@@ -65,8 +65,9 @@ class Login extends Component {
                     style={AppStyle}
 
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    
                 >
-               
+                <Link to="/requireBloodCon" ><RaisedButton label="view Donar" primary={true} style={{margin:"12px"}} /> </Link>
                 </AppBar>
                 <center>
                     <Paper style={style} zDepth={4} >

@@ -6,8 +6,8 @@ const rootReducer = combineReducers({
     //state : rootReducer(initialState()),
 
     application: applicationReducer,
-    application : BloodReqReducer,
-    application: LoginReducer
+  application:  BloodReqReducer,
+     LoginReducer
 
 });
 

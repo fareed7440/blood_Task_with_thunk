@@ -11,4 +11,4 @@ function LoginReducer(state = initialState,action){
             return state;
     }
 }
-//export default LoginReducer;
+export default LoginReducer;
